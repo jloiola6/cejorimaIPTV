@@ -1,0 +1,44 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br>
+    <div class="container col-lg-8 col-sm-10 col-xs-10">
+        <h1>Produtos</h1>
+        <div class="card" id="cardProdutos">
+            <div class="card-body">
+                <form>
+                    <form class="form-inline" action="." method="GET">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
+                    </form>
+                </form>
+                <table class="container table col-lg-12 col-sm-10 col-xs-10">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Usuario</th>
+                        <th class="d-none d-sm-table-cell" scope="col">Telefone</th>
+                        <th class="d-none d-lg-table-cell" scope="col">CPF</th>
+                        <th class="d-none d-lg-table-cell" scope="col">Criado</th>
+                        <th class="d-none d-lg-table-cell" scope="col">Atualizado</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    {% for item in usuarios %}
+                        <tbody>
+                            <tr>
+                                <td>{{ item.nome }}</td>
+                                <td>{{ item.usuario }}</td>
+                                <td class="d-none d-sm-table-cell">{{ item.telefone }}</td>
+                                <td class="d-none d-lg-table-cell">{{ item.cpf }}</td>
+                                <td class="d-none d-lg-table-cell">{{ item.create_at }}</td>
+                                <td class="d-none d-lg-table-cell">{{ item.updated_at }}</td>
+                                <td><a class="btn btn-primary" href="https://site-mercado.azurewebsites.net/usuarios/cadastro-usuario?id={{ item.id }}">Editar</a></td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>    
+{% endblock %}

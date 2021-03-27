@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="CenterAprovar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Produtos no Carrinho</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>    
+            </div>
+            {% for carrinho in carrinho %}
+                {% if item.id == carrinho.compra_id %}
+                    {% for produto in produtos %}
+                        {% if carrinho.produto_id == produto.id %}
+                            <p>{{ produto.nome }} - {{ produto.marca }} - {{ produto.preco }}</p>  
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

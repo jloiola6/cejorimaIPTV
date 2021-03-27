@@ -1,0 +1,30 @@
+.container{
+    margin-top: 3%;
+}
+
+#avisoCompra{
+    margin-top: 25%;
+}
+
+#cardProdutos{
+    max-height:700px;
+    max-width: 1300px;
+    overflow-y:auto;
+}
+
+#produtos{
+    max-height:150px;
+    overflow-y:auto;
+}
+
+#botaoCaixa{
+    align-items: center;
+}
+
+.card-body{
+    text-align: center;
+}
+
+#error{
+    color: red;
+}

@@ -1,0 +1,38 @@
+{% extends 'partials/base.html' %}
+
+{% block title %} Cadastrar Produtos {% endblock %}
+
+
+{% block content %}
+    <br>
+    <div class= 'container col-md-8' >
+        <center>
+            <h1>Cadastro de Venda</h1><br>
+            <div class="card col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="card-body"><br>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for campo in form.visible_fields %}
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    {% if campo.erros %}
+                                        <div class="alert-danger" align="center">
+                                            {% for error in campo.errors %}
+                                                {{ error|striptags }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    {{ campo }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <br><button class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-12" type='submit'>Salvar</button>
+                        <br><br>
+                        <br><button class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-12" href="http://127.0.0.1:8000/">retornar</button>
+                    </form>
+                </div>
+            </div>
+        </center>
+    </div>
+
+{% endblock %}
