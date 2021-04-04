@@ -37,7 +37,7 @@ def cadastroCliente(request):
 
     if id:
         cliente = Cliente.objects.get(id=int(id))
-        form = Cliente(instance=cliente)
+        form = FormCliente(instance=cliente)
         editar = True
     else:
         form = FormCliente()
@@ -91,7 +91,6 @@ def listarClientes(request):
 
     template_name = 'listarClientes.html'
 
-    carrinho = []
     user = True
     cliente = Cliente.objects.all().order_by('-id')
     buscar = request.GET.get('pesquisa')
@@ -101,6 +100,8 @@ def listarClientes(request):
             cliente = Cliente.objects.filter(id__icontains= buscar)
             if not cliente:
                 cliente = Cliente.objects.filter(telefone__icontains= buscar)
+                if not cliente:
+                    cliente = Cliente.objects.filter(endereco__icontains= buscar)
 
 
         return TemplateResponse(request, template_name, locals())

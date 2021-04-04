@@ -1,17 +1,75 @@
 {% extends 'partials/base.html' %}
 
-{% block title %} Cadastrar Produtos {% endblock %}
+{% block title %} Cadastrar Venda {% endblock %}
 
 
 {% block content %}
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <br>
-    <div class= 'container col-md-8' >
+    <div class= 'container col-md-8'>
         <center>
-            <h1>Cadastro de Venda</h1><br>
-            <div class="card col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                <div class="card-body"><br>
+            <h1>Cadastro de Venda</h1>
+            <div class="card col-md-12 col-sm-12 col-xs-12 col-lg-6">
+                <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
+                        <!-- Formulario de cadastro (oculto) de dispositivo -->
+                        <div class="card dispositivos" style="display:none">
+                            <br><h3>Cadastrar Dispositivo</h3><br>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    <input type="text" name="nome_dispositivo" maxlength="100" class="form-control" title="Nome" placeholder="Nome" data-toggle="tooltip" id="id_nome">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    <input type="text" name="device_ID" maxlength="20" class="form-control" title="Device ID" placeholder="Device ID" data-toggle="tooltip" id="id_device_ID">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    <input type="text" name="device_KEY" maxlength="20" class="form-control" title="Device KEY" placeholder="Device KEY" data-toggle="tooltip" id="id_device_KEY">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">  
+                                    <select name="situacao" class="form-control" title="Situação" placeholder="Situação" data-toggle="tooltip" id="id_situacao">
+                                        <option value="Vendido">Vendido</option>
+                                        <option value="Estoque" >Estoque</option>
+                                        <option value="Defeito">Defeito</option>
+                                        <option value="Comprador" selected>Comprador</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Formulario de cadastro (oculto) de cliente -->
+                        <div class="card cliente" style="display:none">
+                        <br><h3>Cadastrar Cliente</h3><br>
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    
+                                    <input type="text" name="nome_cliente" maxlength="40" class="form-control" title="Nome" placeholder="Nome" data-toggle="tooltip" id="id_nome">
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    
+                                    <input type="text" name="telefone" maxlength="15" class="form-control" title="Telefone" placeholder="Telefone" data-toggle="tooltip" id="id_telefone">
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    
+                                    <input type="text" name="endereco" maxlength="150" class="form-control" title="Endereço" placeholder="Endereço" data-toggle="tooltip" id="id_endereco">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!-- Formulario de cadastro de venda -->
                         {% for campo in form.visible_fields %}
                             <div class="form-group">
                                 <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
@@ -26,13 +84,49 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        <br><button class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-12" type='submit'>Salvar</button>
-                        <br><br>
-                        <br><button class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-12" href="http://127.0.0.1:8000/">retornar</button>
+                        
+                        <input type="checkbox" onclick="addNewBtn()" id="checkDispositivos" value="on"> Cadastrar Dispositivos<br>
+                        <input type="checkbox" onclick="addNewBtn()" id="checkCliente" value="on"> Cadastrar Cliente<br> 
+                        {% include 'partials/modalAprovar.html' %}
+                        <br>
+                        <button type="button" class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-6" data-toggle="modal" data-target="#CenterAprovar">Salvar</button>
                     </form>
                 </div>
             </div>
         </center>
-    </div>
 
+        {% comment %} <button onclick="addNewBtn()">Adicione outro botão !</button> {% endcomment %}
+        
+        <script>
+            function addNewBtn(){
+                let checkDispositivos = document.getElementById("checkDispositivos");
+                let checkCliente = document.getElementById("checkCliente");
+                let comboboxDispositivos = document.getElementById("id_produto");
+                let comboboxCliente = document.getElementById("id_cliente");
+                let dispositivos = document.querySelector('.dispositivos');
+                let cliente = document.querySelector('.cliente');
+
+                if (checkDispositivos.checked){ 
+                    // CheckBox Marcado... Faça alguma coisa...
+                    comboboxDispositivos.style.display = 'none';
+                    dispositivos.style.display = 'block';
+                }  else {
+                    // CheckBox Não Marcado... Faça alguma outra coisa...
+                    comboboxDispositivos.style.display = 'block';
+                    dispositivos.style.display = 'none';                    
+                }
+
+                if (checkCliente.checked){ 
+                    // CheckBox Marcado... Faça alguma coisa...
+                    comboboxCliente.style.display = 'none';
+                    cliente.style.display = 'block';
+                }  else {
+                    // CheckBox Não Marcado... Faça alguma outra coisa...
+                    comboboxCliente.style.display = 'block';
+                    cliente.style.display = 'none';
+                }
+
+            }
+        </script>
+    </div>
 {% endblock %}

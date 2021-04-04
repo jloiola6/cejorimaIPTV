@@ -1,9 +1,41 @@
 .container{
     margin-top: 3%;
 }
+body{
+    color: aliceblue;
+    background-color: black;
+}
+
+.card{
+    color: aliceblue;
+    background-color: black;
+}
+
+.dropdown-menu{
+    color: aliceblue;
+    background-color: black;
+}
+
+.dropdown-item{
+    color: aliceblue;
+    background-color: black;
+}
 
 #avisoCompra{
     margin-top: 25%;
+}
+
+.modal-header{
+    color: aliceblue;
+    background-color: black;
+}
+.modal-body{
+    color: aliceblue;
+    background-color: black;
+}
+.modal-footer{
+    color: aliceblue;
+    background-color: black;
 }
 
 #cardProdutos{
@@ -22,6 +54,8 @@
 }
 
 .card-body{
+    color: aliceblue;
+    background-color: black;
     text-align: center;
 }
 

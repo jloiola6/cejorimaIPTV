@@ -6,19 +6,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{% url 'core:index' %}">Planilha <span class="sr-only">(Página atual)</span></a>
+            <a class="nav-item nav-link active" href="{% url 'core:index' %}">Cejorima IPTV <span class="sr-only">(Página atual)</span></a>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Cadastro
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'core:cadastrar' %}">Cadastro venda</a>
+                    <a class="dropdown-item" href="{% url 'core:cadastrar-venda' %}">Cadastro Venda</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'core:cadastrar-dispositivos' %}">Cadastro Dispositivos</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'usuarios:cadastroCliente' %}">Cadastro de Usuário</a>
                 </div>
             </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Listagens
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'core:listar-dispositivos' %}">Listar Dispositivos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'usuarios:listar-clientes' %}">Listar Cliente</a>
+                </div>
+            </li>
             {% if user == True %}
-                    <a class="nav-item nav-link active" href="">Logout</a>
+                    <a class="nav-item nav-link active" href="{% url 'usuarios:logout' %}">Logout</a>
             {% endif %}
         </div>
     </div>

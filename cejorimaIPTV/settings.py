@@ -26,7 +26,7 @@ SECRET_KEY = 'n(*dejp=fa-n7#spy-**-ff$@*db1okc4t$3o&(*s_r5d)x3*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

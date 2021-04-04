@@ -1,13 +1,13 @@
 {% extends 'partials/base.html' %}
 
-{% block title %} Cadastrar Cliente {% endblock %}
+{% block title %} Cadastrar Venda {% endblock %}
 
 
 {% block content %}
     <br>
     <div class= 'container col-md-8' >
         <center>
-            <h1>Cadastro de Cliente</h1><br>
+            <h1>Cadastro de Venda</h1><br>
             <div class="card col-md-6 col-sm-12 col-xs-12 col-lg-6">
                 <div class="card-body"><br>
                     <form method="POST">
@@ -29,6 +29,8 @@
                         {% include 'partials/modalAprovar.html' %}
                         <br>
                         <button type="button" class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-6" data-toggle="modal" data-target="#CenterAprovar">Salvar</button>
+                        {% comment %} <br>
+                        <br><a class="btn btn-primary row col-md-12 col-sm-12 col-xs-12 col-lg-6" href="http://127.0.0.1:8000/">Retornar</a> {% endcomment %}
                     </form>
                 </div>
             </div>

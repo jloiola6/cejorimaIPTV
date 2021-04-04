@@ -4,14 +4,15 @@
 {% block content %}
 <br><br><br>
     <div class="container col-lg-6 col-sm-10 col-xs-10">
-        <h1>Planilha</h1>
+        <h1>Planilha de Vendas</h1>
         <div class="card" id="cardProdutos">
             <div class="card-body">
+                {% comment %} Tentar fazer funcionar a buscar
                 <form>
                     <form class="form-inline" action="." method="GET">
                         <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
                     </form>
-                </form>
+                </form> {% endcomment %}
                 <table class="container table col-lg-12 col-sm-10 col-xs-10">
                     <thead>
                     <tr>
@@ -20,7 +21,6 @@
                         <th scope="col">Tipo</th>
                         <th class="d-none d-sm-table-cell" scope="col">Device_ID</th>
                         <th class="d-none d-sm-table-cell" scope="col">Device_Key</th>
-                        <th class="d-none d-sm-table-cell" scope="col">Marca</th>
                         <th class="d-none d-sm-table-cell" scope="col">Situação</th>
                         <th class="d-none d-sm-table-cell" scope="col">Pagamento</th>
                         <th class="d-none d-sm-table-cell" scope="col">App</th>
@@ -33,14 +33,12 @@
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.id }}</td>
                                 <td>{{ item.cliente }}</td>
                                 <td>{{ item.tipo }}</td>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.Device_ID }}</td>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.Device_KEY }}</td>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.marca }}</td>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.situacao }}</td>
+                                <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.device_ID }}</td>
+                                <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.device_KEY }}</td>
+                                <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.situacao }}</td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.pagamento }}</td>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.app }}</td>
-                                {% comment %} Mudar isso o mais rapido possivel {% endcomment %}
-                                <td><a class="btn btn-primary" href="http://127.0.0.1:8000/cadastrar?id={{ item.id }}">Visualizar</a></td>
+                                <td class="d-none d-sm-table-cell" scope="row">{{ item.aplicativo }}</td>
+                                <td><a class="btn btn-primary" href="{% url 'core:cadastrar-venda' %}?id={{ item.id }}">Visualizar</a></td>
                             </tr>
                         </tbody>
                     {% endfor %}

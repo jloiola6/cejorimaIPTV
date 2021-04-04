@@ -16,3 +16,7 @@ class Cliente(models.Model):
     nome = models.CharField('Nome', max_length=40)
     telefone = models.CharField('Telefone', max_length=15)
     endereco = models.CharField('Endereço', max_length= 150)
+
+    def __str__(self):
+        return self.nome
+    

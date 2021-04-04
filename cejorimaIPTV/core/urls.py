@@ -6,9 +6,8 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('cadastrar/', views.cadastrar_venda, name='cadastrar'),
-    # path('produtos', views.produtos, name='produtos'),
-    # path('listar-produtos', views.listarProdutos, name='listarProdutos'),
-    # path('listar-compras', views.listarCompras, name='listarCompras'),
-    # path('adicionarCarrinho/<int:idProduto>', views.adicionarCarrinho, name='carrinho')
+    path('cadastrar-venda/', views.cadastrar_venda, name='cadastrar-venda'),
+    path('cadastrar-dispositivos/', views.cadastrar_dispositivos, name='cadastrar-dispositivos'),
+    path('listar-dispositivos/', views.listar_dispositivos, name='listar-dispositivos'),
+    # path('teste/', views.teste, name='teste'),
 ]
