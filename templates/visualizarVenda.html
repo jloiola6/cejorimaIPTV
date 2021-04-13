@@ -1,0 +1,85 @@
+{% extends 'partials/base.html' %}
+
+{% block title %} Cadastrar Venda {% endblock %}
+
+
+{% block content %}
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <br>
+    <div class= 'container col-md-8'>
+        <center>
+            <div class="card col-md-12 col-sm-12 col-xs-12 col-lg-6">
+                <div class="card-body">
+                    <br><h5>Dados Dispositivo</h5><br>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <input type="text" name="nome_dispositivo" maxlength="100" class="form-control" disabled value= "{{ venda.produto.nome }}" title="Nome" placeholder="Nome" data-toggle="tooltip" id="id_nome">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <input type="text" name="device_ID" maxlength="20" class="form-control" disabled value= "{{ venda.produto.device_ID }}" title="Device ID" placeholder="Device ID" data-toggle="tooltip" id="id_device_ID">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <input type="text" name="device_KEY" maxlength="20" class="form-control" disabled value= "{{ venda.produto.device_KEY }}" title="Device KEY" placeholder="Device KEY" data-toggle="tooltip" id="id_device_KEY">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">  
+                            <select name="situacao" class="form-control" title="Situação" disabled placeholder="Situação" data-toggle="tooltip" id="id_situacao">
+                                <option value="{{ venda.produto.situacao }}" selected>{{ venda.produto.situacao }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br><h5>Dados Clientes</h5><br>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <input type="text" name="nome_cliente" maxlength="40" class="form-control" disabled title="Nome" value= "{{ venda.cliente.nome }}" placeholder="Nome" data-toggle="tooltip" id="id_nome">
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <input type="text" name="telefone" maxlength="15" class="form-control" disabled title="Telefone" value= "{{ venda.cliente.telefone }}" placeholder="Telefone" data-toggle="tooltip" id="id_telefone">
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <input type="text" name="endereco" maxlength="150" disabled class="form-control" title="Endereço" value= "{{ venda.cliente.endereco }}" placeholder="Endereço" data-toggle="tooltip" id="id_endereco">
+                        </div>
+                    </div>
+
+                    <br><h5>Dados Venda</h5><br>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">  
+                            <select name="situacao" class="form-control" title="Situação" disabled placeholder="Situação" data-toggle="tooltip" id="id_situacao">
+                                <option value="{{ venda.produto.situacao }}" selected>{{ venda.tipo }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">  
+                            <select name="situacao" class="form-control" title="Situação" disabled placeholder="Situação" data-toggle="tooltip" id="id_situacao">
+                                <option value="{{ venda.produto.situacao }}" selected>{{ venda.pagamento }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">  
+                            <select name="situacao" class="form-control" title="Situação" disabled placeholder="Situação" data-toggle="tooltip" id="id_situacao">
+                                <option value="{{ venda.produto.situacao }}" selected>{{ venda.aplicativo }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    {% include 'partials/modalAprovar.html' %}
+                    <br>
+                </div>
+            </div>
+        </center>
+    </div>
+{% endblock %}

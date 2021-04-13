@@ -24,24 +24,36 @@ def cadastrar_venda(request):
     user = True
     editar = False
 
-    if id:
-        venda = Venda.objects.get(id=int(id))
-        form = FormVenda(instance=venda)
-        editar = True
-    else:
-        form = FormVenda()
+    form = FormVenda()
 
     if request.method == 'POST':
-        if editar: 
-            form = FormVenda(request.POST, instance=venda)
-        else:
-            form = FormVenda(request.POST)
-            
+        form = FormVenda(request.POST)
         if form.is_valid():
             save(form, request, editar, id)
-            if editar: 
-                return HttpResponseRedirect('/')
             form = FormVenda()
+
+    return TemplateResponse(request, template_name, locals())
+
+
+def visualizar_venda(request):
+    if verification(request) == False:
+        user = False
+        return HttpResponseRedirect('/usuarios/login')
+
+    template_name = 'visualizarVenda.html'
+
+    editar = True
+    user = True
+    id = request.GET.get('id')
+
+    venda = Venda.objects.get(id=int(id))
+    form = FormVenda(instance=venda)
+
+    if request.method == 'POST':
+        form = FormVenda(request.POST, instance=venda)
+        if form.is_valid():
+            save(form, request, editar, id)
+            return HttpResponseRedirect('/')
 
     return TemplateResponse(request, template_name, locals())
 
@@ -55,12 +67,6 @@ def index(request):
 
     user = True
     venda = Venda.objects.all().order_by('-id')
-
-    #Fazer campo de busca funcionar
-    # buscar = request.GET.get('pesquisa')
-    # if buscar:
-    #     venda = pesquisarVenda(buscar)
-    #     return TemplateResponse(request, template_name, locals())
 
     return TemplateResponse(request, template_name, locals())
 
@@ -77,18 +83,18 @@ def listar_dispositivos(request):
 
     user = True
     dispositivos = Dispositivos.objects.all().order_by('-id')
-    buscar = request.GET.get('pesquisa')
-    if buscar:
-        dispositivos = Dispositivos.objects.filter(nome__icontains= buscar)
-        if not cliente:
-            dispositivos = Dispositivos.objects.filter(id__icontains= buscar)
-            if not cliente:
-                dispositivos = Dispositivos.objects.filter(telefone__icontains= buscar)
-                if not cliente:
-                    dispositivos = Dispositivos.objects.filter(endereco__icontains= buscar)
+    # buscar = request.GET.get('pesquisa')
+    # if buscar:
+    #     dispositivos = Dispositivos.objects.filter(nome__icontains= buscar)
+    #     if not dispositivos:
+    #         dispositivos = Dispositivos.objects.filter(device_ID__icontains= buscar)
+    #         if not dispositivos:
+    #             dispositivos = Dispositivos.objects.filter(device_KEY= buscar)
+    #             if not dispositivos:
+    #                 dispositivos = Dispositivos.objects.filter(situacao__icontains= buscar)
 
 
-        return TemplateResponse(request, template_name, locals())
+        # return TemplateResponse(request, template_name, locals())
 
     return TemplateResponse(request, template_name, locals())
 
@@ -119,7 +125,6 @@ def cadastrar_dispositivos(request):
             form = FormDispositivos(request.POST)
 
         if form.is_valid():
-            # form.updated_at = datetime.now()
             form.save()
             if editar: 
                 return HttpResponseRedirect('/')

@@ -34,17 +34,15 @@ def save(form, request, editar, id):
         form.cleaned_data['cliente'] = cliente
 
     if editar:
-        print("editar")
         venda = Venda.objects.get(id= id)
         venda.cliente = form.cleaned_data['cliente']
         venda.produto = form.cleaned_data['produto']
         venda.tipo = form.cleaned_data['tipo']
         venda.pagamento = form.cleaned_data['pagamento']
         venda.aplicativo = form.cleaned_data['aplicativo']
-        venda.save()
     else:
-        print("novo")
         venda = Venda(cliente=form.cleaned_data['cliente'], produto=form.cleaned_data['produto'], tipo= form.cleaned_data['tipo'], pagamento = form.cleaned_data['pagamento'], aplicativo = form.cleaned_data['aplicativo'])
-        venda.save()
+
+    venda.save()
 
     

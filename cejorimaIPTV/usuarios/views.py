@@ -93,17 +93,17 @@ def listarClientes(request):
 
     user = True
     cliente = Cliente.objects.all().order_by('-id')
-    buscar = request.GET.get('pesquisa')
-    if buscar:
-        cliente = Cliente.objects.filter(nome__icontains= buscar)
-        if not cliente:
-            cliente = Cliente.objects.filter(id__icontains= buscar)
-            if not cliente:
-                cliente = Cliente.objects.filter(telefone__icontains= buscar)
-                if not cliente:
-                    cliente = Cliente.objects.filter(endereco__icontains= buscar)
+    # buscar = request.GET.get('pesquisa')
+    # if buscar:
+    #     cliente = Cliente.objects.filter(nome__icontains= buscar)
+    #     if not cliente:
+    #         cliente = Cliente.objects.filter(id__icontains= buscar)
+    #         if not cliente:
+    #             cliente = Cliente.objects.filter(telefone__icontains= buscar)
+    #             if not cliente:
+    #                 cliente = Cliente.objects.filter(endereco__icontains= buscar)
 
 
-        return TemplateResponse(request, template_name, locals())
+        # return TemplateResponse(request, template_name, locals())
 
     return TemplateResponse(request, template_name, locals())

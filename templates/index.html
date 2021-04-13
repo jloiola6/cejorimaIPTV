@@ -2,18 +2,16 @@
 {% load static %}
 
 {% block content %}
-<br><br><br>
+    <br>
     <div class="container col-lg-6 col-sm-10 col-xs-10">
         <h1>Planilha de Vendas</h1>
         <div class="card" id="cardProdutos">
             <div class="card-body">
-                {% comment %} Tentar fazer funcionar a buscar
-                <form>
-                    <form class="form-inline" action="." method="GET">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
-                    </form>
-                </form> {% endcomment %}
-                <table class="container table col-lg-12 col-sm-10 col-xs-10">
+                {% comment %} Tentar fazer funcionar a buscar {% endcomment %}
+                <div class= "buscar">
+                    <input class="form-control mr-sm-2" id="search" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
+                </div>
+                <table class="container table col-lg-12 col-sm-12 col-xs-12" id="dados">
                     <thead>
                     <tr>
                         <th class="d-none d-sm-table-cell" scope="col">id</th>
@@ -38,7 +36,7 @@
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.situacao }}</td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.pagamento }}</td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.aplicativo }}</td>
-                                <td><a class="btn btn-primary" href="{% url 'core:cadastrar-venda' %}?id={{ item.id }}">Visualizar</a></td>
+                                <td><a class="btn btn-primary" href="{% url 'core:visualizar-venda' %}?id={{ item.id }}">Visualizar</a></td>
                             </tr>
                         </tbody>
                     {% endfor %}
@@ -46,4 +44,15 @@
             </div>
         </div>
     </div>    
+    <script>
+        var $rows = $('#dados tr');
+        $('#search').keyup(function() {
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+            $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
+        });
+    </script>
+    
 {% endblock %}

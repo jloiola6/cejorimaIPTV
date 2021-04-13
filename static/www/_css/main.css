@@ -1,41 +1,42 @@
 .container{
     margin-top: 3%;
 }
-body{
+
+html[dark] .cards .card p{
+    background-color: black;
+    color: aliceblue;
+  }
+
+  html[white] .cards .card p{
+    background-color: white;
+    color: black;
+  }
+
+  html[dark] .button{
+    color: white;
+  }
+
+/* .card{
     color: aliceblue;
     background-color: black;
+} */
+/* 
+.dark{
+    background-color: black;
+    color: aliceblue;
+} */
+
+tr{
+    display: block;
 }
 
-.card{
-    color: aliceblue;
+.white{
     background-color: black;
-}
-
-.dropdown-menu{
     color: aliceblue;
-    background-color: black;
-}
-
-.dropdown-item{
-    color: aliceblue;
-    background-color: black;
 }
 
 #avisoCompra{
     margin-top: 25%;
-}
-
-.modal-header{
-    color: aliceblue;
-    background-color: black;
-}
-.modal-body{
-    color: aliceblue;
-    background-color: black;
-}
-.modal-footer{
-    color: aliceblue;
-    background-color: black;
 }
 
 #cardProdutos{
@@ -54,8 +55,6 @@ body{
 }
 
 .card-body{
-    color: aliceblue;
-    background-color: black;
     text-align: center;
 }
 

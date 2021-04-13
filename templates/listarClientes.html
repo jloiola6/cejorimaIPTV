@@ -9,10 +9,10 @@
             <div class="card-body">
                 <form>
                     <form class="form-inline" action="." method="GET">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
+                        <input class="form-control mr-sm-2" type="search" id="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
                     </form>
                 </form>
-                <table class="container table col-lg-12 col-sm-10 col-xs-10">
+                <table class="container table col-lg-12 col-sm-10 col-xs-10" id= "dados">
                     <thead>
                     <tr>
                         <th scope="col">Nome</th>
@@ -35,4 +35,14 @@
             </div>
         </div>
     </div>    
+    <script>
+        var $rows = $('#dados tr');
+        $('#search').keyup(function() {
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+            $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
+        });
+    </script>  
 {% endblock %}
