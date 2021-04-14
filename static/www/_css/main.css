@@ -2,7 +2,7 @@
     margin-top: 3%;
 }
 
-html[dark] .cards .card p{
+/* html[dark] .cards .card p{
     background-color: black;
     color: aliceblue;
   }
@@ -14,7 +14,7 @@ html[dark] .cards .card p{
 
   html[dark] .button{
     color: white;
-  }
+  } */
 
 /* .card{
     color: aliceblue;
@@ -26,14 +26,15 @@ html[dark] .cards .card p{
     color: aliceblue;
 } */
 
+/* 
 tr{
     display: block;
-}
+} */
 
-.white{
+/* .white{
     background-color: black;
     color: aliceblue;
-}
+} */
 
 #avisoCompra{
     margin-top: 25%;

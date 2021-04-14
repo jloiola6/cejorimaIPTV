@@ -4,7 +4,10 @@
 {% block content %}
     <br>
     <div class="container col-lg-6 col-sm-10 col-xs-10">
-        <h1>Planilha de Vendas</h1>
+        <div class= "row">
+            <h1>Planilha de Vendas</h1>
+            {% comment %} <a class="btn btn-primary" onclick="ExportXLSX();" id="btnExport" >Visualizar</a> {% endcomment %}
+        </div>
         <div class="card" id="cardProdutos">
             <div class="card-body">
                 {% comment %} Tentar fazer funcionar a buscar {% endcomment %}
