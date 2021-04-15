@@ -14,13 +14,8 @@
                     <form method="POST">
                         {% csrf_token %}
                         <!-- Formulario de cadastro (oculto) de dispositivo -->
-                        <div class="card dispositivos" style="display:none">
+                        <div class="card box" style="display:none">
                             <br><h3>Cadastrar Dispositivo</h3><br>
-                            <div class="form-group">
-                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                                    <input type="text" name="nome_dispositivo" maxlength="100" class="form-control" title="Nome" placeholder="Nome" data-toggle="tooltip" id="id_nome">
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                                     <input type="text" name="device_ID" maxlength="20" class="form-control" title="Device ID" placeholder="Device ID" data-toggle="tooltip" id="id_device_ID">
@@ -101,19 +96,19 @@
             function addNewBtn(){
                 let checkDispositivos = document.getElementById("checkDispositivos");
                 let checkCliente = document.getElementById("checkCliente");
-                let comboboxDispositivos = document.getElementById("id_produto");
+                let comboboxBox = document.getElementById("id_box");
                 let comboboxCliente = document.getElementById("id_cliente");
-                let dispositivos = document.querySelector('.dispositivos');
+                let box = document.querySelector('.box');
                 let cliente = document.querySelector('.cliente');
 
                 if (checkDispositivos.checked){ 
                     // CheckBox Marcado... Faça alguma coisa...
-                    comboboxDispositivos.style.display = 'none';
-                    dispositivos.style.display = 'block';
+                    comboboxBox.style.display = 'none';
+                    box.style.display = 'block';
                 } else {
                     // CheckBox Não Marcado... Faça alguma outra coisa...
-                    comboboxDispositivos.style.display = 'block';
-                    dispositivos.style.display = 'none';                    
+                    comboboxBox.style.display = 'block';
+                    box.style.display = 'none';                    
                 }
 
                 if (checkCliente.checked){ 

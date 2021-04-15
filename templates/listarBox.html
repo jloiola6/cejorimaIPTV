@@ -4,7 +4,7 @@
 {% block content %}
     <br>
     <div class="container col-lg-6 col-sm-8 col-xs-5">
-        <h1>Clientes</h1>
+        <h1>Duplex</h1>
         <div class="card" id="cardProdutos">
             <div class="card-body">
                 <form>
@@ -12,29 +12,29 @@
                         <input class="form-control mr-sm-2" type="search" id="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
                     </form>
                 </form>
-                <table class="container table col-lg-12 col-sm-10 col-xs-10" id= "dados">
+                <table class="container table col-lg-12 col-sm-10 col-xs-10" id="dados">
                     <thead>
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Telefone</th>
-                        <th class="d-none d-lg-table-cell" scope="col">Endereco</th>
+                        <th class="d-none d-lg-table-cell" scope="col">Identificação</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
-                    {% for item in cliente %}
+                    {% for item in box %}
                         <tbody>
                             <tr>
+                                <td>{{ item.id }}</td>
                                 <td>{{ item.nome }}</td>
-                                <td>{{ item.telefone }}</td>
-                                <td class="d-none d-lg-table-cell">{{ item.endereco }}</td>
-                                <td><a class="btn btn-primary" href="{% url 'usuarios:cadastroCliente' %}?id={{ item.id }}">Editar</a></td>
+                                <td class="d-none d-lg-table-cell">{{ item.identificador }}</td>
+                                <td><a class="btn btn-primary" href="{% url 'core:cadastrar-box' %}?id={{ item.id }}">Editar</a></td>
                             </tr>
                         </tbody>
                     {% endfor %}
                 </table>
             </div>
         </div>
-    </div>    
+    </div>  
     <script>
         var $rows = $('#dados tr');
         $('#search').keyup(function() {

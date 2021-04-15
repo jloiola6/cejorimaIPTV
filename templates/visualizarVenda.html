@@ -11,11 +11,18 @@
             <div class="card col-md-12 col-sm-12 col-xs-12 col-lg-6">
                 <div class="card-body">
                     <br><h5>Dados Dispositivo</h5><br>
-                    <div class="form-group">
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                            <input type="text" name="nome_dispositivo" maxlength="100" class="form-control" disabled value= "{{ venda.produto.nome }}" title="Nome" placeholder="Nome" data-toggle="tooltip" id="id_nome">
+                    {% if box == True%}
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                <input type="text" name="id_box" maxlength="100" class="form-control" disabled value= "{{ venda.produto.box }}" title="Id" placeholder="Id" data-toggle="tooltip" id="Id_Id">
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                <input type="text" name="nome_dispositivo" maxlength="100" class="form-control" disabled value= "{{ venda.produto.box.nome }}" title="Nome" placeholder="Nome" data-toggle="tooltip" id="id_nome">
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="form-group">
                         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                             <input type="text" name="device_ID" maxlength="20" class="form-control" disabled value= "{{ venda.produto.device_ID }}" title="Device ID" placeholder="Device ID" data-toggle="tooltip" id="id_device_ID">

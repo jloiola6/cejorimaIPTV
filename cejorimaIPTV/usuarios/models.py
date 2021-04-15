@@ -15,7 +15,11 @@ class Usuario(models.Model):
 class Cliente(models.Model):
     nome = models.CharField('Nome', max_length=40)
     telefone = models.CharField('Telefone', max_length=15)
+    email = models.CharField('Email', max_length= 40, null=True)
     endereco = models.CharField('Endereço', max_length= 150)
+
+    create_at = models.DateTimeField('Criado em', auto_now_add= True, null=True)
+    updated_at = models.DateTimeField('Atualizado em', auto_now= True)
 
     def __str__(self):
         return self.nome

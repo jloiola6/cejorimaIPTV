@@ -10,19 +10,18 @@
         </div>
         <div class="card" id="cardProdutos">
             <div class="card-body">
-                {% comment %} Tentar fazer funcionar a buscar {% endcomment %}
                 <div class= "buscar">
                     <input class="form-control mr-sm-2" id="search" type="search" placeholder="Pesquisar" name="pesquisa" aria-label="Pesquisar">
                 </div>
                 <table class="container table col-lg-12 col-sm-12 col-xs-12" id="dados">
                     <thead>
                     <tr>
-                        <th class="d-none d-sm-table-cell" scope="col">id</th>
+                        {% comment %} <th class="d-none d-sm-table-cell" scope="col">id</th> {% endcomment %}
                         <th scope="col">Cliente</th>
                         <th scope="col">Tipo</th>
+                        <th class="d-none d-sm-table-cell" scope="col">Box</th>
                         <th class="d-none d-sm-table-cell" scope="col">Device_ID</th>
                         <th class="d-none d-sm-table-cell" scope="col">Device_Key</th>
-                        <th class="d-none d-sm-table-cell" scope="col">Situação</th>
                         <th class="d-none d-sm-table-cell" scope="col">Pagamento</th>
                         <th class="d-none d-sm-table-cell" scope="col">App</th>
                         <th scope="col"></th>
@@ -31,12 +30,12 @@
                     {% for item in venda %}
                         <tbody>
                             <tr>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.id }}</td>
+                                {% comment %} <td class="d-none d-sm-table-cell" scope="row">{{ item.id }}</td> {% endcomment %}
                                 <td>{{ item.cliente }}</td>
                                 <td>{{ item.tipo }}</td>
+                                <td><a href="{% url 'core:cadastrar-box' %}?id={{ item.produto.box.id }}">{{ item.produto.box.id }}</a></td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.device_ID }}</td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.device_KEY }}</td>
-                                <td class="d-none d-sm-table-cell" scope="row">{{ item.produto.situacao }}</td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.pagamento }}</td>
                                 <td class="d-none d-sm-table-cell" scope="row">{{ item.aplicativo }}</td>
                                 <td><a class="btn btn-primary" href="{% url 'core:visualizar-venda' %}?id={{ item.id }}">Visualizar</a></td>

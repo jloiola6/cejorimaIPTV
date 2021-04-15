@@ -30,9 +30,11 @@
                 <div class="dropdown-menu white" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item white" href="{% url 'core:cadastrar-venda' %}">Cadastro Venda</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item white" href="{% url 'core:cadastrar-dispositivos' %}">Cadastro Dispositivos</a>
+                    <a class="dropdown-item white" href="{% url 'core:cadastrar-box' %}">Cadastro Box</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item white" href="{% url 'usuarios:cadastroCliente' %}">Cadastro de Usuário</a>
+                    <a class="dropdown-item white" href="{% url 'core:cadastrar-dispositivos' %}">Configurar Duplex</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item white" href="{% url 'usuarios:cadastroCliente' %}">Cadastro de Cliente</a>
                 </div>
             </li>
 
@@ -41,7 +43,9 @@
                     Listagens
                 </a>
                 <div class="dropdown-menu white" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item white" href="{% url 'core:listar-dispositivos' %}">Listar Dispositivos</a>
+                    <a class="dropdown-item white" href="{% url 'core:listar-box' %}">Listar Box</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item white" href="{% url 'core:listar-duplex' %}">Listar Duplex</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item white" href="{% url 'usuarios:listar-clientes' %}">Listar Cliente</a>
                 </div>

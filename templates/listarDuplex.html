@@ -3,8 +3,8 @@
 
 {% block content %}
     <br>
-    <div class="container col-lg-5 col-sm-5 col-xs-5">
-        <h1>Produtos</h1>
+    <div class="container col-lg-6 col-sm-8 col-xs-5">
+        <h1>Duplex</h1>
         <div class="card" id="cardProdutos">
             <div class="card-body">
                 <form>
@@ -15,7 +15,7 @@
                 <table class="container table col-lg-12 col-sm-10 col-xs-10" id="dados">
                     <thead>
                     <tr>
-                        <th scope="col">Nome</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Situação</th>
                         <th class="d-none d-lg-table-cell" scope="col">Device ID</th>
                         <th class="d-none d-lg-table-cell" scope="col">Device KEY</th>
@@ -25,7 +25,7 @@
                     {% for item in dispositivos %}
                         <tbody>
                             <tr>
-                                <td>{{ item.nome }}</td>
+                                <td><a href="{% url 'core:cadastrar-box' %}?id={{ item.box.id }}">{{ item.box.id }}</a></td>
                                 <td>{{ item.situacao }}</td>
                                 <td class="d-none d-lg-table-cell">{{ item.device_ID }}</td>
                                 <td class="d-none d-lg-table-cell">{{ item.device_KEY }}</td>
